@@ -49,6 +49,18 @@
     width: 100%;
   }
 
+  .contact-us-form-div{
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+  }
+
+  .feedback-form-div{
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+  }
+
 /* .row {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -172,9 +184,9 @@
     .section-title{
         font-size: 32px;
     }
-    .service-card{
+    /* .service-card{
         grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    }
+    } */
     .service-inner-section{
         width: 100%;
         display: flex;
