@@ -47,7 +47,7 @@ export default function Footer() {
                 <span className="text-xs font-black text-white">MK</span>
               </div>
               <span className="font-['Playfair_Display'] text-lg font-bold text-white">
-                Creative<span className="text-violet-400">Templates</span>
+                Murtaza<span className="text-violet-400">Kheri</span>
               </span>
             </div>
             <p className="text-sm text-white/40 leading-relaxed max-w-xs">
@@ -112,7 +112,7 @@ export default function Footer() {
         {/* Bottom bar */}
         <div className="border-t border-white/5 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-xs text-white/25">
-            © 2025 Graphic Design Services Kuwait. All rights reserved.
+            © 2025 Murtaza Kheri Full Stack. All rights reserved.
           </p>
           <p className="text-xs text-white/25">
             Designed & Developed with{' '}

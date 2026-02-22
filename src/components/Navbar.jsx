@@ -107,7 +107,7 @@ export default function Navbar() {
               </div>
             </div>
             <span className="font-['Playfair_Display'] text-base sm:text-lg font-bold text-white tracking-wide">
-              Creative<span className="text-violet-400">Templates</span>
+              Murtaza<span className="text-violet-400">Kheri</span>
             </span>
           </a>
 
