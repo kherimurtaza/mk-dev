@@ -82,7 +82,6 @@ function SkillBar({ name, icon, level, delay, gradient }) {
           transition={{ duration: 1.4, delay: delay + 0.1, ease: [0.22, 1, 0.36, 1] }}
           className={`h-full rounded-full bg-gradient-to-r ${gradient} relative`}
         >
-          {/* Sheen */}
           <span className="absolute inset-0 rounded-full bg-gradient-to-r from-transparent via-white/30 to-transparent" />
         </motion.div>
       </div>
@@ -96,7 +95,7 @@ function SkillPanel({ category, activeTab, setActiveTab }) {
   return (
     <button
       onClick={() => setActiveTab(category.label)}
-      className={`relative flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-semibold transition-all duration-300 ${
+      className={`relative flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-300 whitespace-nowrap ${
         isActive
           ? `bg-gradient-to-r ${category.gradient} text-white shadow-lg ${category.glow}`
           : 'text-white/40 hover:text-white/70 bg-white/3 border border-white/8'
@@ -184,35 +183,35 @@ export default function About() {
   const activeCategory = skillCategories.find((c) => c.label === activeTab)
 
   return (
-    <section id="about" className="relative py-32 bg-[#0a0a0f] overflow-hidden" ref={sectionRef}>
+    <section id="about" className="relative py-20 sm:py-32 bg-[#0a0a0f] overflow-hidden" ref={sectionRef}>
       {/* ── Background ── */}
-      <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-cyan-700/6 rounded-full blur-[150px] pointer-events-none" />
-      <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-violet-700/8 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute top-0 left-0 w-[300px] sm:w-[500px] h-[300px] sm:h-[500px] bg-cyan-700/6 rounded-full blur-[150px] pointer-events-none" />
+      <div className="absolute bottom-0 right-0 w-[250px] sm:w-[400px] h-[250px] sm:h-[400px] bg-violet-700/8 rounded-full blur-[120px] pointer-events-none" />
       <div className="absolute inset-0 bg-[linear-gradient(rgba(6,182,212,0.015)_1px,transparent_1px),linear-gradient(to_right,rgba(6,182,212,0.015)_1px,transparent_1px)] bg-[size:50px_50px]" />
 
-      <div className="relative mx-auto max-w-6xl px-6">
+      <div className="relative mx-auto max-w-6xl px-4 sm:px-6">
         {/* ── Section header ── */}
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7 }}
-          className="text-center mb-20"
+          className="text-center mb-12 sm:mb-20"
         >
           <p className="text-xs font-bold uppercase tracking-[0.35em] text-cyan-400 mb-4 font-mono">&lt; about me /&gt;</p>
-          <h2 className="font-['Playfair_Display'] text-5xl sm:text-6xl font-bold text-white leading-tight">
+          <h2 className="font-['Playfair_Display'] text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight">
             Code, Craft &{' '}
             <span className="text-transparent bg-gradient-to-r from-cyan-400 via-violet-400 to-fuchsia-400 bg-clip-text">
               AI Magic
             </span>
           </h2>
-          <p className="mt-4 text-white/40 max-w-xl mx-auto text-sm leading-relaxed">
-            Full Stack Developer with 3+ years building production-grade apps using the MERN stack, 
+          <p className="mt-4 text-white/40 max-w-xl mx-auto text-sm leading-relaxed px-2">
+            Full Stack Developer with 3+ years building production-grade apps using the MERN stack,
             and crafting intelligent AI automations with Python.
           </p>
         </motion.div>
 
         {/* ── Main grid ── */}
-        <div className="grid gap-12 lg:grid-cols-[380px_1fr] lg:items-start">
+        <div className="grid gap-10 lg:gap-12 lg:grid-cols-[380px_1fr] lg:items-start">
 
           {/* ── LEFT COLUMN: Image + terminal ── */}
           <motion.div
@@ -229,25 +228,25 @@ export default function About() {
                 <img
                   src={aboutImg}
                   alt="Murtaza Kheri"
-                  className="w-full object-cover aspect-[4/3]"
+                  className="w-full object-cover aspect-[4/3] sm:aspect-[4/3]"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0f] via-[#0a0a0f]/20 to-transparent" />
 
                 {/* Overlay identity card */}
-                <div className="absolute bottom-5 left-5 right-5">
-                  <div className="rounded-2xl bg-black/60 backdrop-blur-xl border border-white/10 p-4">
+                <div className="absolute bottom-4 left-4 right-4 sm:bottom-5 sm:left-5 sm:right-5">
+                  <div className="rounded-2xl bg-black/60 backdrop-blur-xl border border-white/10 p-3 sm:p-4">
                     <div className="flex items-center justify-between">
                       <div>
-                        <p className="font-['Playfair_Display'] text-lg font-bold text-white">Murtaza Kheri</p>
-                        <p className="text-xs text-cyan-300 mt-0.5">Full Stack Developer · AI Engineer</p>
+                        <p className="font-['Playfair_Display'] text-base sm:text-lg font-bold text-white">Murtaza Kheri</p>
+                        <p className="text-[11px] sm:text-xs text-cyan-300 mt-0.5">Full Stack Developer · AI Engineer</p>
                       </div>
-                      <div className="flex items-center gap-1.5 bg-green-500/15 border border-green-500/30 rounded-full px-2.5 py-1">
+                      <div className="flex items-center gap-1.5 bg-green-500/15 border border-green-500/30 rounded-full px-2 sm:px-2.5 py-1">
                         <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" />
-                        <span className="text-xs text-green-300">Open</span>
+                        <span className="text-[11px] sm:text-xs text-green-300">Open</span>
                       </div>
                     </div>
                     {/* Mini tech pills */}
-                    <div className="flex gap-1.5 mt-3 flex-wrap">
+                    <div className="flex gap-1.5 mt-2 sm:mt-3 flex-wrap">
                       {['MERN', 'Python', 'AWS', 'AI/ML'].map((t) => (
                         <span key={t} className="text-[10px] font-bold px-2 py-0.5 rounded-md bg-white/8 border border-white/12 text-white/50">
                           {t}
@@ -262,10 +261,10 @@ export default function About() {
               <motion.div
                 animate={{ y: [0, -8, 0] }}
                 transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
-                className="absolute -top-3 -right-3 rounded-2xl bg-gradient-to-br from-cyan-500 to-violet-600 p-4 shadow-2xl shadow-cyan-500/30 z-10"
+                className="absolute -top-3 -right-3 rounded-2xl bg-gradient-to-br from-cyan-500 to-violet-600 p-3 sm:p-4 shadow-2xl shadow-cyan-500/30 z-10"
               >
-                <p className="text-2xl font-black text-white font-['Playfair_Display']">3+</p>
-                <p className="text-[10px] text-white/80 font-semibold">Yrs Exp.</p>
+                <p className="text-xl sm:text-2xl font-black text-white font-['Playfair_Display']">3+</p>
+                <p className="text-[9px] sm:text-[10px] text-white/80 font-semibold">Yrs Exp.</p>
               </motion.div>
             </div>
 
@@ -273,15 +272,15 @@ export default function About() {
             <TerminalCard />
 
             {/* Quick stat row */}
-            <div className="grid grid-cols-3 gap-3">
+            <div className="grid grid-cols-3 gap-2 sm:gap-3">
               {[
                 { n: '50+', l: 'Projects', g: 'from-cyan-500 to-blue-500' },
                 { n: '30+', l: 'Clients', g: 'from-violet-500 to-purple-500' },
                 { n: '18', l: 'Skills', g: 'from-fuchsia-500 to-pink-500' },
               ].map(({ n, l, g }) => (
-                <div key={l} className="rounded-2xl bg-white/4 border border-white/8 p-3 text-center">
-                  <p className={`text-xl font-black bg-gradient-to-r ${g} bg-clip-text text-transparent font-['Playfair_Display']`}>{n}</p>
-                  <p className="text-[10px] text-white/35 mt-0.5 font-semibold uppercase tracking-wider">{l}</p>
+                <div key={l} className="rounded-2xl bg-white/4 border border-white/8 p-2.5 sm:p-3 text-center">
+                  <p className={`text-lg sm:text-xl font-black bg-gradient-to-r ${g} bg-clip-text text-transparent font-['Playfair_Display']`}>{n}</p>
+                  <p className="text-[9px] sm:text-[10px] text-white/35 mt-0.5 font-semibold uppercase tracking-wider">{l}</p>
                 </div>
               ))}
             </div>
@@ -292,30 +291,34 @@ export default function About() {
             initial={{ opacity: 0, x: 50 }}
             animate={inView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="space-y-8"
+            className="space-y-7 sm:space-y-8"
           >
             {/* Bio */}
             <div className="space-y-4">
               <p className="text-xs font-bold uppercase tracking-[0.3em] text-cyan-400 font-mono">// who i am</p>
-              <h3 className="font-['Playfair_Display'] text-3xl sm:text-4xl font-bold text-white leading-tight">
-                Building Full-Stack Products <br />
+              <h3 className="font-['Playfair_Display'] text-2xl sm:text-3xl lg:text-4xl font-bold text-white leading-tight">
+                Building Full-Stack Products{' '}
+                <br className="hidden sm:block" />
                 <span className="text-transparent bg-gradient-to-r from-cyan-400 to-violet-400 bg-clip-text">
                   Powered by AI
                 </span>
               </h3>
               <p className="text-white/55 leading-relaxed text-sm">
-                I'm a Full Stack Developer based in Kuwait, specialising in the <span className="text-cyan-300 font-semibold">MERN stack</span> — 
-                building scalable, performant web applications from database to UI. I also leverage <span className="text-violet-300 font-semibold">Python</span> to 
-                design intelligent AI automations, data pipelines, and LLM-powered workflows that save real hours for real businesses.
+                I'm a Full Stack Developer based in Kuwait, specialising in the{' '}
+                <span className="text-cyan-300 font-semibold">MERN stack</span> — building scalable,
+                performant web applications from database to UI. I also leverage{' '}
+                <span className="text-violet-300 font-semibold">Python</span> to design intelligent AI
+                automations, data pipelines, and LLM-powered workflows that save real hours for real businesses.
               </p>
               <p className="text-white/40 leading-relaxed text-sm">
-                With 3+ years of shipping production code, I care deeply about clean architecture, responsive design, and 
-                developer experience — from a pixel-perfect frontend to a robust cloud-deployed backend on AWS.
+                With 3+ years of shipping production code, I care deeply about clean architecture, responsive
+                design, and developer experience — from a pixel-perfect frontend to a robust cloud-deployed
+                backend on AWS.
               </p>
             </div>
 
             {/* What I do cards */}
-            <div className="grid sm:grid-cols-3 gap-3">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
               {[
                 {
                   icon: '⚛️',
@@ -359,9 +362,10 @@ export default function About() {
 
             {/* ── SKILLS WITH TABS ── */}
             <div className="space-y-5">
-              <div className="flex items-center justify-between">
+              {/* Tab header — scrollable on mobile */}
+              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
                 <p className="text-xs font-bold uppercase tracking-[0.3em] text-white/40 font-mono">// skill stack</p>
-                <div className="flex gap-2">
+                <div className="flex gap-2 overflow-x-auto pb-1 sm:pb-0 scrollbar-none -mx-1 px-1">
                   {skillCategories.map((cat) => (
                     <SkillPanel
                       key={cat.label}
@@ -379,7 +383,7 @@ export default function About() {
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.4 }}
-                className={`rounded-2xl ${activeCategory.bg} border ${activeCategory.border} p-5 space-y-4`}
+                className={`rounded-2xl ${activeCategory.bg} border ${activeCategory.border} p-4 sm:p-5 space-y-4`}
               >
                 {activeCategory.skills.map(({ name, icon, level }, i) => (
                   <SkillBar
@@ -414,12 +418,12 @@ export default function About() {
             </div>
 
             {/* CTA */}
-            <div className="flex flex-wrap gap-4 pt-2">
+            <div className="flex flex-col xs:flex-row flex-wrap gap-3 sm:gap-4 pt-2">
               <motion.a
                 href="#contact"
                 whileHover={{ scale: 1.04 }}
                 whileTap={{ scale: 0.97 }}
-                className="group relative overflow-hidden inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-cyan-500 to-violet-600 px-8 py-3.5 text-sm font-bold text-white shadow-xl shadow-cyan-500/20 hover:shadow-cyan-500/40 transition-shadow"
+                className="group relative overflow-hidden inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-cyan-500 to-violet-600 px-7 sm:px-8 py-3 sm:py-3.5 text-sm font-bold text-white shadow-xl shadow-cyan-500/20 hover:shadow-cyan-500/40 transition-shadow"
               >
                 <span className="absolute inset-0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700 bg-gradient-to-r from-transparent via-white/15 to-transparent" />
                 <span className="relative">Let's Build Together</span>
@@ -429,7 +433,7 @@ export default function About() {
               </motion.a>
               <a
                 href="#services"
-                className="inline-flex items-center gap-2 rounded-full border border-white/12 bg-white/4 px-8 py-3.5 text-sm font-semibold text-white/70 hover:text-white hover:bg-white/8 hover:border-white/25 transition-all"
+                className="inline-flex items-center justify-center gap-2 rounded-full border border-white/12 bg-white/4 px-7 sm:px-8 py-3 sm:py-3.5 text-sm font-semibold text-white/70 hover:text-white hover:bg-white/8 hover:border-white/25 transition-all"
               >
                 View Services
               </a>

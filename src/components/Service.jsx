@@ -14,8 +14,10 @@ const SWIPER_STYLES = `
   .svc-swiper-slide { flex-shrink: 0; padding: 0 10px; box-sizing: border-box; }
   .svc-progress-bar { height: 2px; background: rgba(255,255,255,0.06); border-radius: 999px; overflow: hidden; }
   .svc-progress-fill { height: 100%; border-radius: 999px; transition: width 0.1s linear; background: linear-gradient(to right,#06b6d4,#8b5cf6,#d946ef); }
-  .svc-dot { width:6px; height:6px; border-radius:999px; background:rgba(255,255,255,0.2); transition:all 0.3s ease; cursor:pointer; }
+  .svc-dot { width:6px; height:6px; border-radius:999px; background:rgba(255,255,255,0.2); transition:all 0.3s ease; cursor:pointer; flex-shrink: 0; }
   .svc-dot.active { width:28px; background:linear-gradient(to right,#8b5cf6,#d946ef); }
+  .svc-dots-row { display:flex; align-items:center; gap:6px; overflow-x:auto; max-width:100%; padding:4px 8px; scrollbar-width:none; }
+  .svc-dots-row::-webkit-scrollbar { display:none; }
 `
 
 // ─── Services Data ────────────────────────────────────────────────────────────
@@ -414,24 +416,24 @@ function ServiceCard({ service, isActive }) {
       />
 
       {/* Visual */}
-      <div className="relative h-48 overflow-hidden flex-shrink-0">
+      <div className="relative h-44 sm:h-48 overflow-hidden flex-shrink-0">
         {renderVisual()}
         <div className="absolute inset-0 bg-gradient-to-t from-[#0d0d18] via-[#0d0d18]/10 to-transparent" />
 
         {/* Icon badge */}
-        <div className={`absolute top-3.5 left-3.5 w-10 h-10 rounded-2xl bg-gradient-to-br ${service.gradient} flex items-center justify-center text-lg shadow-xl z-10 group-hover:scale-110 transition-transform duration-300`}>
+        <div className={`absolute top-3 left-3 sm:top-3.5 sm:left-3.5 w-9 h-9 sm:w-10 sm:h-10 rounded-2xl bg-gradient-to-br ${service.gradient} flex items-center justify-center text-base sm:text-lg shadow-xl z-10 group-hover:scale-110 transition-transform duration-300`}>
           {service.icon}
         </div>
 
         {/* Tag */}
         {service.tag && (
-          <span className={`absolute top-3.5 right-3.5 text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-xl border z-10 backdrop-blur-sm ${service.tagStyle}`}>
+          <span className={`absolute top-3 right-3 sm:top-3.5 sm:right-3.5 text-[9px] sm:text-[10px] font-bold uppercase tracking-wider px-2 sm:px-2.5 py-1 rounded-xl border z-10 backdrop-blur-sm ${service.tagStyle}`}>
             {service.tag}
           </span>
         )}
 
         {/* Type label */}
-        <div className={`absolute bottom-3.5 left-3.5 z-10 flex items-center gap-1.5 px-2.5 py-1 rounded-lg backdrop-blur-sm bg-black/30 border border-white/10`}>
+        <div className="absolute bottom-3 left-3 sm:bottom-3.5 sm:left-3.5 z-10 flex items-center gap-1.5 px-2 sm:px-2.5 py-1 rounded-lg backdrop-blur-sm bg-black/30 border border-white/10">
           <span className="text-[9px] font-bold uppercase tracking-[0.15em] text-white/50">
             {service.type === 'dev' ? '⚙ Dev' : '🎨 Design'}
           </span>
@@ -448,9 +450,9 @@ function ServiceCard({ service, isActive }) {
       </div>
 
       {/* Body */}
-      <div className="p-5 flex-1 flex flex-col gap-3">
+      <div className="p-4 sm:p-5 flex-1 flex flex-col gap-3">
         <div>
-          <h3 className="font-['Playfair_Display'] text-lg font-bold text-white leading-tight">{service.title}</h3>
+          <h3 className="font-['Playfair_Display'] text-base sm:text-lg font-bold text-white leading-tight">{service.title}</h3>
           <p className={`text-[11px] font-semibold font-mono mt-0.5 ${service.textAccent}`}>{service.subtitle}</p>
         </div>
 
@@ -541,12 +543,11 @@ function AIBackground() {
   )
 }
 
-// ─── Custom Swiper ────────────────────────────────────────────────────────────
+// ─── Custom Swiper hook ───────────────────────────────────────────────────────
 function useCarousel({ total, visibleCount, autoplayDelay = 2800 }) {
   const [current, setCurrent] = useState(0)
   const [progress, setProgress] = useState(0)
   const [paused, setPaused] = useState(false)
-  const timerRef = useRef(null)
   const progressRef = useRef(null)
   const startTimeRef = useRef(null)
   const elapsedRef = useRef(0)
@@ -594,16 +595,16 @@ function StatsRow({ inView }) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 30 }} animate={inView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.7 }}
-      className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-14"
+      className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 mb-10 sm:mb-14"
     >
       {stats.map(({ value, label, icon, g }, i) => (
         <motion.div key={label}
           initial={{ opacity: 0, scale: 0.85 }} animate={inView ? { opacity: 1, scale: 1 } : {}} transition={{ duration: 0.5, delay: 0.1 * i }}
-          className="rounded-2xl bg-white/3 border border-white/8 p-4 text-center hover:bg-white/5 transition-colors group"
+          className="rounded-2xl bg-white/3 border border-white/8 p-3 sm:p-4 text-center hover:bg-white/5 transition-colors group"
         >
-          <span className="text-xl group-hover:scale-110 inline-block transition-transform">{icon}</span>
-          <p className={`text-2xl font-black bg-gradient-to-r ${g} bg-clip-text text-transparent font-['Playfair_Display'] mt-1`}>{value}</p>
-          <p className="text-[10px] text-white/35 font-semibold uppercase tracking-wider mt-0.5">{label}</p>
+          <span className="text-lg sm:text-xl group-hover:scale-110 inline-block transition-transform">{icon}</span>
+          <p className={`text-xl sm:text-2xl font-black bg-gradient-to-r ${g} bg-clip-text text-transparent font-['Playfair_Display'] mt-1`}>{value}</p>
+          <p className="text-[9px] sm:text-[10px] text-white/35 font-semibold uppercase tracking-wider mt-0.5">{label}</p>
         </motion.div>
       ))}
     </motion.div>
@@ -633,61 +634,41 @@ export default function Services() {
     autoplayDelay: 2800,
   })
 
-  // Compute which cards are "centered" (active)
-  const getActiveIndices = () => {
-    const indices = []
-    const half = Math.floor(visibleCount / 2)
-    for (let i = -half; i <= half; i++) {
-      indices.push(((current + i) % services.length + services.length) % services.length)
-    }
-    return indices
-  }
-  const activeIndices = getActiveIndices()
-
-  // Build ordered slide list (looping)
-  const slideCount = visibleCount + 4
-  const slides = Array.from({ length: slideCount }, (_, i) => {
-    const offset = i - Math.floor(slideCount / 2)
-    const idx = ((current + offset) % services.length + services.length) % services.length
-    return { idx, offset }
-  })
-
-  const slideWidth = visibleCount === 1 ? 88 : visibleCount === 2 ? 46 : 31
   const gapPct = 1.5
 
   return (
-    <section id="services" className="relative py-28 bg-[#0a0a0f] overflow-hidden" ref={sectionRef}>
+    <section id="services" className="relative py-20 sm:py-28 bg-[#0a0a0f] overflow-hidden" ref={sectionRef}>
       <style>{SWIPER_STYLES}</style>
       <AIBackground />
 
       {/* Glows */}
-      <div className="absolute top-1/4 right-0 w-[500px] h-[500px] bg-violet-700/6 rounded-full blur-[150px] pointer-events-none" />
-      <div className="absolute bottom-1/4 left-0 w-[400px] h-[400px] bg-cyan-700/5 rounded-full blur-[130px] pointer-events-none" />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-fuchsia-700/3 rounded-full blur-[180px] pointer-events-none" />
+      <div className="absolute top-1/4 right-0 w-[300px] sm:w-[500px] h-[300px] sm:h-[500px] bg-violet-700/6 rounded-full blur-[150px] pointer-events-none" />
+      <div className="absolute bottom-1/4 left-0 w-[250px] sm:w-[400px] h-[250px] sm:h-[400px] bg-cyan-700/5 rounded-full blur-[130px] pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] sm:w-[700px] h-[400px] sm:h-[700px] bg-fuchsia-700/3 rounded-full blur-[180px] pointer-events-none" />
 
-      <div className="relative mx-auto max-w-7xl px-6">
+      <div className="relative mx-auto max-w-7xl px-4 sm:px-6">
 
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 24 }} animate={inView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.7 }}
-          className="text-center mb-12"
+          className="text-center mb-10 sm:mb-12"
         >
           <p className="text-xs font-bold uppercase tracking-[0.35em] text-cyan-400 mb-4 font-mono">&lt; what i offer /&gt;</p>
-          <h2 className="font-['Playfair_Display'] text-5xl sm:text-6xl font-bold text-white leading-tight">
+          <h2 className="font-['Playfair_Display'] text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight">
             Services &{' '}
             <span className="text-transparent bg-gradient-to-r from-cyan-400 via-violet-400 to-fuchsia-400 bg-clip-text">Solutions</span>
           </h2>
-          <p className="mt-4 text-white/40 max-w-xl mx-auto text-sm leading-relaxed">
+          <p className="mt-4 text-white/40 max-w-xl mx-auto text-sm leading-relaxed px-2">
             From full-stack web applications and AI integrations to stunning visual design — everything your digital presence needs, under one roof.
           </p>
 
-          {/* Live counter row */}
-          <div className="flex items-center justify-center gap-3 mt-6">
-            <div className="flex items-center gap-1.5 bg-white/4 border border-white/8 rounded-full px-4 py-2">
+          {/* Live counter row — stacks gracefully on mobile */}
+          <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3 mt-5 sm:mt-6">
+            <div className="flex items-center gap-1.5 bg-white/4 border border-white/8 rounded-full px-3 sm:px-4 py-1.5 sm:py-2">
               <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" />
               <span className="text-xs text-white/50 font-mono">Auto-sliding</span>
             </div>
-            <div className="flex items-center gap-2 bg-white/4 border border-white/8 rounded-full px-4 py-2">
+            <div className="flex items-center gap-2 bg-white/4 border border-white/8 rounded-full px-3 sm:px-4 py-1.5 sm:py-2">
               <span className={`text-xs font-bold bg-gradient-to-r ${services[current].gradient} bg-clip-text text-transparent font-mono`}>
                 {String(current + 1).padStart(2, '0')} / {String(services.length).padStart(2, '0')}
               </span>
@@ -704,15 +685,14 @@ export default function Services() {
           className="relative"
           onMouseEnter={() => setPaused(true)}
           onMouseLeave={() => setPaused(false)}
+          onTouchStart={() => setPaused(true)}
+          onTouchEnd={() => setPaused(false)}
         >
-          {/* Cards viewport */}
-          <div className="overflow-hidden px-2 py-8">
+          {/* Cards viewport — extra side padding on mobile to show nav arrows inside */}
+          <div className="overflow-hidden px-8 sm:px-3 py-6 sm:py-8">
             <div
               className="flex"
-              style={{
-                gap: `${gapPct}%`,
-                transition: 'none',
-              }}
+              style={{ gap: `${gapPct}%`, transition: 'none' }}
             >
               {Array.from({ length: visibleCount + 2 }, (_, i) => {
                 const offset = i - 1
@@ -737,20 +717,24 @@ export default function Services() {
             </div>
           </div>
 
-          {/* Left/Right nav arrows */}
+          {/* Left nav — inside bounds on mobile */}
           <button
             onClick={prev}
-            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-2 z-30 w-12 h-12 rounded-2xl bg-[#0d0d18]/90 backdrop-blur border border-white/12 flex items-center justify-center text-white/60 hover:text-white hover:border-white/30 hover:bg-white/10 transition-all group shadow-xl"
+            className="absolute left-0 sm:-left-2 top-1/2 -translate-y-1/2 z-30 w-9 h-9 sm:w-12 sm:h-12 rounded-xl sm:rounded-2xl bg-[#0d0d18]/90 backdrop-blur border border-white/12 flex items-center justify-center text-white/60 hover:text-white hover:border-white/30 hover:bg-white/10 active:scale-95 transition-all group shadow-xl"
+            aria-label="Previous"
           >
-            <svg className="w-5 h-5 group-hover:-translate-x-0.5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <svg className="w-4 h-4 sm:w-5 sm:h-5 group-hover:-translate-x-0.5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
             </svg>
           </button>
+
+          {/* Right nav — inside bounds on mobile */}
           <button
             onClick={next}
-            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-2 z-30 w-12 h-12 rounded-2xl bg-[#0d0d18]/90 backdrop-blur border border-white/12 flex items-center justify-center text-white/60 hover:text-white hover:border-white/30 hover:bg-white/10 transition-all group shadow-xl"
+            className="absolute right-0 sm:-right-2 top-1/2 -translate-y-1/2 z-30 w-9 h-9 sm:w-12 sm:h-12 rounded-xl sm:rounded-2xl bg-[#0d0d18]/90 backdrop-blur border border-white/12 flex items-center justify-center text-white/60 hover:text-white hover:border-white/30 hover:bg-white/10 active:scale-95 transition-all group shadow-xl"
+            aria-label="Next"
           >
-            <svg className="w-5 h-5 group-hover:translate-x-0.5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <svg className="w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-0.5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
             </svg>
           </button>
@@ -759,31 +743,32 @@ export default function Services() {
         {/* ── Controls row ── */}
         <motion.div
           initial={{ opacity: 0, y: 20 }} animate={inView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.6, delay: 0.5 }}
-          className="mt-2 flex flex-col items-center gap-5"
+          className="mt-2 flex flex-col items-center gap-4 sm:gap-5"
         >
           {/* Progress bar */}
-          <div className="svc-progress-bar w-64">
+          <div className="svc-progress-bar w-48 sm:w-64">
             <div className="svc-progress-fill" style={{ width: `${progress}%` }} />
           </div>
 
-          {/* Dot indicators */}
-          <div className="flex items-center gap-2">
+          {/* Dot indicators — scrollable on mobile */}
+          <div className="svc-dots-row">
             {services.map((_, i) => (
               <button
                 key={i}
                 onClick={() => goTo(i)}
-                className={`svc-dot transition-all duration-300 ${i === current ? 'active' : ''}`}
+                className={`svc-dot ${i === current ? 'active' : ''}`}
+                aria-label={`Go to slide ${i + 1}`}
               />
             ))}
           </div>
 
-          {/* Active card name + type badges */}
-          <div className="flex flex-wrap items-center justify-center gap-3">
-            <div className="flex items-center gap-2.5 px-5 py-2.5 rounded-2xl bg-white/4 border border-white/10">
-              <span className="text-lg">{services[current].icon}</span>
-              <div>
-                <p className="text-sm font-semibold text-white leading-tight">{services[current].title}</p>
-                <p className={`text-[10px] font-mono ${services[current].textAccent}`}>{services[current].subtitle}</p>
+          {/* Active card name + type badges — stacks on mobile */}
+          <div className="flex flex-col sm:flex-row flex-wrap items-center justify-center gap-2 sm:gap-3 w-full px-2 sm:px-0">
+            <div className="flex items-center gap-2.5 px-4 sm:px-5 py-2 sm:py-2.5 rounded-2xl bg-white/4 border border-white/10 max-w-full">
+              <span className="text-base sm:text-lg flex-shrink-0">{services[current].icon}</span>
+              <div className="min-w-0">
+                <p className="text-xs sm:text-sm font-semibold text-white leading-tight truncate">{services[current].title}</p>
+                <p className={`text-[10px] font-mono ${services[current].textAccent} truncate`}>{services[current].subtitle}</p>
               </div>
             </div>
             <div className="flex gap-2">
@@ -803,18 +788,21 @@ export default function Services() {
         <motion.div
           initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-60px' }} transition={{ duration: 0.7 }}
-          className="mt-20 rounded-3xl bg-gradient-to-br from-cyan-500/5 via-violet-500/8 to-fuchsia-500/5 border border-violet-500/20 p-10 text-center relative overflow-hidden"
+          className="mt-14 sm:mt-20 rounded-3xl bg-gradient-to-br from-cyan-500/5 via-violet-500/8 to-fuchsia-500/5 border border-violet-500/20 p-7 sm:p-10 text-center relative overflow-hidden"
         >
           <div className="absolute inset-0 bg-[linear-gradient(rgba(139,92,246,0.022)_1px,transparent_1px),linear-gradient(to_right,rgba(139,92,246,0.022)_1px,transparent_1px)] bg-[size:30px_30px]" />
           <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
             <div className="w-80 h-80 rounded-full bg-violet-500/5 blur-3xl" />
           </div>
           <p className="relative text-xs font-bold uppercase tracking-[0.3em] text-violet-400 mb-3 font-mono">// custom quote</p>
-          <h3 className="relative font-['Playfair_Display'] text-3xl sm:text-4xl font-bold text-white mb-3">Not Sure Which Service?</h3>
-          <p className="relative text-white/40 text-sm max-w-md mx-auto mb-8 leading-relaxed">
+          <h3 className="relative font-['Playfair_Display'] text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-3">Not Sure Which Service?</h3>
+          <p className="relative text-white/40 text-sm max-w-md mx-auto mb-7 sm:mb-8 leading-relaxed px-2">
             Tell me about your project and I'll recommend the best solution with a custom quote — no obligation.
           </p>
-          <a href="#contact" className="group relative overflow-hidden inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-cyan-500 via-violet-600 to-fuchsia-600 px-10 py-4 text-sm font-bold text-white shadow-2xl shadow-violet-500/25 hover:shadow-violet-500/50 hover:scale-105 transition-all">
+          <a
+            href="#contact"
+            className="group relative overflow-hidden inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-cyan-500 via-violet-600 to-fuchsia-600 px-7 sm:px-10 py-3.5 sm:py-4 text-sm font-bold text-white shadow-2xl shadow-violet-500/25 hover:shadow-violet-500/50 hover:scale-105 active:scale-95 transition-all"
+          >
             <span className="absolute inset-0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700 bg-gradient-to-r from-transparent via-white/15 to-transparent" />
             <span className="relative">Let's Discuss Your Project</span>
             <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform relative" fill="none" viewBox="0 0 24 24" stroke="currentColor">
