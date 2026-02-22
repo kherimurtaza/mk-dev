@@ -5,7 +5,7 @@ const testimonials = [
   {
     name: 'Ahmed Al-Rashidi',
     role: 'Business Owner',
-    text: "Murtaza designed our complete brand identity. The logo, social media templates, and brochures are beyond what we imagined. Truly professional work!",
+    text: "Murtaza built a fully dynamic website for our company with an admin dashboard and smooth performance. Everything works flawlessly and loads very fast.",
     rating: 5,
     avatar: 'AR',
     color: 'from-violet-500 to-indigo-500',
@@ -13,18 +13,26 @@ const testimonials = [
   {
     name: 'Fatima Hassan',
     role: 'Marketing Manager',
-    text: "Fast delivery, stunning design, and incredible attention to detail. Our social media engagement doubled after using his post templates.",
+    text: "Our single-page website looks modern, responsive, and extremely smooth. The animations and UI design made our brand feel premium online.",
     rating: 5,
     avatar: 'FH',
     color: 'from-fuchsia-500 to-pink-500',
   },
   {
-    name: 'Omar Khalid',
+    name: 'Ali Khalid',
     role: 'Startup Founder',
-    text: "From website template to email design — Murtaza handled everything perfectly. Best designer in Kuwait for sure!",
+    text: "Murtaza created a fast static website optimized for SEO and performance. The frontend UI is clean, professional, and works perfectly on all devices.",
     rating: 5,
-    avatar: 'OK',
+    avatar: 'AK',
     color: 'from-cyan-500 to-blue-500',
+  },
+  {
+    name: 'Sara Abdullah',
+    role: 'E-commerce Manager',
+    text: "The frontend UI he developed is beautiful and user-friendly. Our customers now navigate the website much easier and conversions improved.",
+    rating: 5,
+    avatar: 'SA',
+    color: 'from-emerald-500 to-teal-500',
   },
 ]
 
