@@ -7,11 +7,8 @@ import logoTemplate from '/img/logo-template.png'
 import portfolioTemplate from '/img/portfolio-template.png'
 import emailTemplate from '/img/email-template-2.png'
 
-// ─── Swiper CSS injected inline so no import issues ──────────────────────────
+// ─── Swiper CSS ───────────────────────────────────────────────────────────────
 const SWIPER_STYLES = `
-  .svc-swiper-wrap { position: relative; width: 100%; }
-  .svc-swiper-track { display: flex; transition: transform 0.7s cubic-bezier(0.25,0.46,0.45,0.94); will-change: transform; }
-  .svc-swiper-slide { flex-shrink: 0; padding: 0 10px; box-sizing: border-box; }
   .svc-progress-bar { height: 2px; background: rgba(255,255,255,0.06); border-radius: 999px; overflow: hidden; }
   .svc-progress-fill { height: 100%; border-radius: 999px; transition: width 0.1s linear; background: linear-gradient(to right,#06b6d4,#8b5cf6,#d946ef); }
   .svc-dot { width:6px; height:6px; border-radius:999px; background:rgba(255,255,255,0.2); transition:all 0.3s ease; cursor:pointer; flex-shrink: 0; }
@@ -29,7 +26,7 @@ const services = [
     tagStyle: 'bg-cyan-500/20 border-cyan-400/50 text-cyan-300',
     gradient: 'from-cyan-500 to-blue-600',
     border: 'border-cyan-500/25', bg: 'bg-cyan-500/5',
-    textAccent: 'text-cyan-300', glowColor: 'rgba(6,182,212,0.3)',
+    textAccent: 'text-cyan-300', glowColor: 'rgba(6,182,212,0.35)',
     stack: ['React.js', 'Node.js', 'MongoDB', 'REST API'],
     points: [
       { label: 'Starter (SPA)', price: '80–150 KD' },
@@ -53,7 +50,7 @@ const services = [
     tagStyle: 'bg-violet-500/20 border-violet-400/50 text-violet-300',
     gradient: 'from-violet-500 to-indigo-600',
     border: 'border-violet-500/25', bg: 'bg-violet-500/5',
-    textAccent: 'text-violet-300', glowColor: 'rgba(139,92,246,0.3)',
+    textAccent: 'text-violet-300', glowColor: 'rgba(139,92,246,0.35)',
     stack: ['Next.js', 'Vite', 'TailwindCSS', 'Vercel'],
     points: [
       { label: 'Landing Page', price: '30–60 KD' },
@@ -69,7 +66,7 @@ const services = [
     icon: '🎨', tag: null,
     gradient: 'from-fuchsia-500 to-pink-600',
     border: 'border-fuchsia-500/25', bg: 'bg-fuchsia-500/5',
-    textAccent: 'text-fuchsia-300', glowColor: 'rgba(217,70,239,0.3)',
+    textAccent: 'text-fuchsia-300', glowColor: 'rgba(217,70,239,0.35)',
     stack: ['React.js', 'Redux', 'Framer Motion', 'MUI'],
     points: [
       { label: 'Component Library', price: '40–80 KD' },
@@ -85,7 +82,7 @@ const services = [
     icon: '🔧', tag: null,
     gradient: 'from-emerald-500 to-teal-600',
     border: 'border-emerald-500/25', bg: 'bg-emerald-500/5',
-    textAccent: 'text-emerald-300', glowColor: 'rgba(16,185,129,0.3)',
+    textAccent: 'text-emerald-300', glowColor: 'rgba(16,185,129,0.35)',
     stack: ['Node.js', 'Express', 'MongoDB', 'AWS'],
     points: [
       { label: 'REST API Build', price: '50–100 KD' },
@@ -102,7 +99,7 @@ const services = [
     tagStyle: 'bg-amber-500/20 border-amber-400/50 text-amber-300',
     gradient: 'from-amber-500 to-orange-500',
     border: 'border-amber-500/25', bg: 'bg-amber-500/5',
-    textAccent: 'text-amber-300', glowColor: 'rgba(245,158,11,0.3)',
+    textAccent: 'text-amber-300', glowColor: 'rgba(245,158,11,0.35)',
     stack: ['Stripe', 'PayPal', 'Node.js', 'Webhooks'],
     points: [
       { label: 'Stripe / PayPal', price: '40–80 KD' },
@@ -118,7 +115,7 @@ const services = [
     icon: '✦', tag: null,
     gradient: 'from-rose-500 to-red-500',
     border: 'border-rose-500/25', bg: 'bg-rose-500/5',
-    textAccent: 'text-rose-300', glowColor: 'rgba(244,63,94,0.3)',
+    textAccent: 'text-rose-300', glowColor: 'rgba(244,63,94,0.35)',
     stack: ['Figma', 'TailwindCSS', 'Framer Motion', 'MUI'],
     points: [
       { label: 'Wireframe + Prototype', price: '30–60 KD' },
@@ -134,7 +131,7 @@ const services = [
     icon: '🌐', tag: null,
     gradient: 'from-sky-500 to-blue-500',
     border: 'border-sky-500/25', bg: 'bg-sky-500/5',
-    textAccent: 'text-sky-300', glowColor: 'rgba(14,165,233,0.3)',
+    textAccent: 'text-sky-300', glowColor: 'rgba(14,165,233,0.35)',
     img: webTemplate, stack: ['HTML/CSS', 'TailwindCSS', 'React', 'Vite'],
     points: [
       { label: 'Basic Template', price: '20–40 KD' },
@@ -150,7 +147,7 @@ const services = [
     tagStyle: 'bg-pink-500/20 border-pink-400/50 text-pink-300',
     gradient: 'from-pink-500 to-rose-500',
     border: 'border-pink-500/25', bg: 'bg-pink-500/5',
-    textAccent: 'text-pink-300', glowColor: 'rgba(236,72,153,0.3)',
+    textAccent: 'text-pink-300', glowColor: 'rgba(236,72,153,0.35)',
     img: socialMedia, stack: [],
     points: [
       { label: 'Single Post', price: '3–5 KD' },
@@ -167,7 +164,7 @@ const services = [
     tagStyle: 'bg-indigo-500/20 border-indigo-400/50 text-indigo-300',
     gradient: 'from-indigo-500 to-purple-500',
     border: 'border-indigo-500/25', bg: 'bg-indigo-500/5',
-    textAccent: 'text-indigo-300', glowColor: 'rgba(99,102,241,0.3)',
+    textAccent: 'text-indigo-300', glowColor: 'rgba(99,102,241,0.35)',
     img: logoTemplate, stack: [],
     points: [
       { label: 'Basic Logo', price: '10–15 KD' },
@@ -182,7 +179,7 @@ const services = [
     icon: '📄', tag: null,
     gradient: 'from-orange-500 to-yellow-500',
     border: 'border-orange-500/25', bg: 'bg-orange-500/5',
-    textAccent: 'text-orange-300', glowColor: 'rgba(249,115,22,0.3)',
+    textAccent: 'text-orange-300', glowColor: 'rgba(249,115,22,0.35)',
     img: businessTemplate, stack: [],
     points: [
       { label: 'Simple Poster', price: '5–8 KD' },
@@ -197,7 +194,7 @@ const services = [
     icon: '📧', tag: null,
     gradient: 'from-teal-500 to-cyan-600',
     border: 'border-teal-500/25', bg: 'bg-teal-500/5',
-    textAccent: 'text-teal-300', glowColor: 'rgba(20,184,166,0.3)',
+    textAccent: 'text-teal-300', glowColor: 'rgba(20,184,166,0.35)',
     img: emailTemplate, stack: [],
     points: [
       { label: 'Simple Layout', price: '10–15 KD' },
@@ -212,7 +209,7 @@ const services = [
     icon: '🏆', tag: null,
     gradient: 'from-lime-500 to-green-500',
     border: 'border-lime-500/25', bg: 'bg-lime-500/5',
-    textAccent: 'text-lime-300', glowColor: 'rgba(132,204,22,0.3)',
+    textAccent: 'text-lime-300', glowColor: 'rgba(132,204,22,0.35)',
     img: portfolioTemplate, stack: [],
     points: [
       { label: 'Basic Layout', price: '3–5 KD' },
@@ -373,12 +370,6 @@ function UIDesignVisual({ service }) {
         <div className="flex-1 h-5 rounded-lg bg-white/5 border border-white/8" />
         <div className={`w-10 h-5 rounded-lg bg-gradient-to-r ${service.gradient} opacity-60`} />
       </div>
-      <div className="flex items-center gap-2">
-        <svg className="w-3.5 h-3.5 text-rose-400 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24">
-          <path d="M4 0l16 12.279-6.951 1.17 4.325 8.817-3.596 1.734-4.35-8.879-5.428 4.702z" />
-        </svg>
-        <span className="text-[9px] text-white/25 font-mono">Figma → Pixel-perfect Code</span>
-      </div>
     </div>
   )
 }
@@ -402,17 +393,14 @@ function ServiceCard({ service, isActive }) {
       className={`group relative rounded-3xl overflow-hidden bg-[#0d0d18] border flex flex-col h-full transition-all duration-500 ${service.border}`}
       style={{
         boxShadow: isActive
-          ? `0 32px 64px -16px ${service.glowColor}, 0 0 0 1px ${service.glowColor}`
-          : '0 6px 28px rgba(0,0,0,0.5)',
-        transform: isActive ? 'scale(1)' : 'scale(0.96)',
-        opacity: isActive ? 1 : 0.7,
-        transition: 'all 0.5s cubic-bezier(0.25,0.46,0.45,0.94)',
+          ? `0 32px 72px -12px ${service.glowColor}, 0 0 0 1px ${service.glowColor}, 0 8px 32px rgba(0,0,0,0.6)`
+          : '0 6px 28px rgba(0,0,0,0.4)',
       }}
     >
-      {/* Top glow */}
+      {/* Top accent line — always visible on active */}
       <div
-        className={`absolute top-0 inset-x-0 h-[1.5px] bg-gradient-to-r from-transparent via-current to-transparent z-20 ${service.textAccent} transition-opacity duration-300`}
-        style={{ opacity: isActive ? 1 : 0 }}
+        className={`absolute top-0 inset-x-0 h-[2px] bg-gradient-to-r from-transparent via-current to-transparent z-20 ${service.textAccent}`}
+        style={{ opacity: isActive ? 1 : 0, transition: 'opacity 0.4s' }}
       />
 
       {/* Visual */}
@@ -439,7 +427,6 @@ function ServiceCard({ service, isActive }) {
           </span>
         </div>
 
-        {/* Dev orbit ring */}
         {service.type === 'dev' && (
           <motion.div animate={{ rotate: 360 }} transition={{ duration: 12, repeat: Infinity, ease: 'linear' }}
             className="absolute bottom-3 right-3 w-9 h-9 opacity-20 z-10">
@@ -509,7 +496,6 @@ function AIBackground() {
           [8,12,22,4],[22,4,42,18],[42,18,63,6],[63,6,78,16],[78,16,93,9],
           [8,12,14,42],[42,18,36,52],[63,6,58,40],[78,16,76,55],
           [14,42,36,52],[36,52,58,40],[58,40,76,55],
-          [14,42,4,70],[36,52,27,78],[58,40,49,68],[76,55,87,73],
         ].map(([x1,y1,x2,y2],i) => (
           <motion.line key={i} x1={`${x1}%`} y1={`${y1}%`} x2={`${x2}%`} y2={`${y2}%`}
             stroke="url(#svcBgGrad)" strokeWidth="1"
@@ -518,9 +504,6 @@ function AIBackground() {
           />
         ))}
       </svg>
-      <motion.div className="absolute inset-x-0 h-px bg-gradient-to-r from-transparent via-cyan-400/12 to-transparent"
-        animate={{ top: ['0%', '100%'] }} transition={{ duration: 9, repeat: Infinity, ease: 'linear' }}
-      />
       {Array.from({ length: 14 }).map((_, i) => (
         <motion.div key={i} className="absolute w-1 h-1 rounded-full bg-violet-400/20"
           style={{ left: `${(i * 7.1) % 100}%`, top: `${(i * 6.4) % 100}%` }}
@@ -528,23 +511,12 @@ function AIBackground() {
           transition={{ duration: 4 + (i % 3), delay: i * 0.28, repeat: Infinity }}
         />
       ))}
-      <div className="absolute top-0 left-0 w-52 h-52 opacity-[0.035]">
-        <div className="absolute top-8 left-8 w-36 h-36 border border-cyan-400 rounded-full" />
-        <div className="absolute top-16 left-16 w-20 h-20 border border-violet-400 rounded-full" />
-        <div className="absolute top-20 left-0 right-0 h-px bg-gradient-to-r from-cyan-400 to-transparent" />
-        <div className="absolute left-10 top-0 bottom-0 w-px bg-gradient-to-b from-violet-400 to-transparent" />
-      </div>
-      <div className="absolute bottom-0 right-0 w-52 h-52 opacity-[0.035] rotate-180">
-        <div className="absolute top-8 left-8 w-36 h-36 border border-fuchsia-400 rounded-full" />
-        <div className="absolute top-20 left-0 right-0 h-px bg-gradient-to-r from-fuchsia-400 to-transparent" />
-        <div className="absolute left-10 top-0 bottom-0 w-px bg-gradient-to-b from-pink-400 to-transparent" />
-      </div>
     </div>
   )
 }
 
-// ─── Custom Swiper hook ───────────────────────────────────────────────────────
-function useCarousel({ total, visibleCount, autoplayDelay = 2800 }) {
+// ─── Custom Carousel hook ─────────────────────────────────────────────────────
+function useCarousel({ total, autoplayDelay = 2800 }) {
   const [current, setCurrent] = useState(0)
   const [progress, setProgress] = useState(0)
   const [paused, setPaused] = useState(false)
@@ -561,10 +533,7 @@ function useCarousel({ total, visibleCount, autoplayDelay = 2800 }) {
   const prev = () => goTo(current - 1)
 
   useEffect(() => {
-    if (paused) {
-      clearInterval(progressRef.current)
-      return
-    }
+    if (paused) { clearInterval(progressRef.current); return }
     elapsedRef.current = 0
     startTimeRef.current = Date.now()
     clearInterval(progressRef.current)
@@ -616,12 +585,16 @@ export default function Services() {
   const sectionRef = useRef(null)
   const inView = useInView(sectionRef, { once: true, margin: '-80px' })
 
-  // Responsive visible count
+  // Responsive: how many FULL cards to show
   const [visibleCount, setVisibleCount] = useState(3)
+  const [isMobile, setIsMobile] = useState(false)
+
   useEffect(() => {
     const update = () => {
       const w = window.innerWidth
-      setVisibleCount(w < 640 ? 1 : w < 1024 ? 2 : 3)
+      const mobile = w < 640
+      setIsMobile(mobile)
+      setVisibleCount(mobile ? 1 : w < 1024 ? 2 : 3)
     }
     update()
     window.addEventListener('resize', update)
@@ -630,18 +603,20 @@ export default function Services() {
 
   const { current, progress, paused, setPaused, goTo, next, prev } = useCarousel({
     total: services.length,
-    visibleCount,
     autoplayDelay: 2800,
   })
 
-  const gapPct = 1.5
+  // ── Card sizing
+  // Mobile: center card = 76% width, side cards peek ~12% each
+  // Tablet: 3 cards visible (center + 2 full)
+  // Desktop: 3 cards visible
+  const CARD_GAP = 16 // px gap between cards
 
   return (
     <section id="services" className="relative py-20 sm:py-28 bg-[#0a0a0f] overflow-hidden" ref={sectionRef}>
       <style>{SWIPER_STYLES}</style>
       <AIBackground />
 
-      {/* Glows */}
       <div className="absolute top-1/4 right-0 w-[300px] sm:w-[500px] h-[300px] sm:h-[500px] bg-violet-700/6 rounded-full blur-[150px] pointer-events-none" />
       <div className="absolute bottom-1/4 left-0 w-[250px] sm:w-[400px] h-[250px] sm:h-[400px] bg-cyan-700/5 rounded-full blur-[130px] pointer-events-none" />
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] sm:w-[700px] h-[400px] sm:h-[700px] bg-fuchsia-700/3 rounded-full blur-[180px] pointer-events-none" />
@@ -659,16 +634,14 @@ export default function Services() {
             <span className="text-transparent bg-gradient-to-r from-cyan-400 via-violet-400 to-fuchsia-400 bg-clip-text">Solutions</span>
           </h2>
           <p className="mt-4 text-white/40 max-w-xl mx-auto text-sm leading-relaxed px-2">
-            From full-stack web applications and AI integrations to stunning visual design — everything your digital presence needs, under one roof.
+            From full-stack web applications to stunning visual design — everything your digital presence needs, under one roof.
           </p>
-
-          {/* Live counter row — stacks gracefully on mobile */}
-          <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3 mt-5 sm:mt-6">
-            <div className="flex items-center gap-1.5 bg-white/4 border border-white/8 rounded-full px-3 sm:px-4 py-1.5 sm:py-2">
+          <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3 mt-5">
+            <div className="flex items-center gap-1.5 bg-white/4 border border-white/8 rounded-full px-3 sm:px-4 py-1.5">
               <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" />
               <span className="text-xs text-white/50 font-mono">Auto-sliding</span>
             </div>
-            <div className="flex items-center gap-2 bg-white/4 border border-white/8 rounded-full px-3 sm:px-4 py-1.5 sm:py-2">
+            <div className="flex items-center gap-2 bg-white/4 border border-white/8 rounded-full px-3 sm:px-4 py-1.5">
               <span className={`text-xs font-bold bg-gradient-to-r ${services[current].gradient} bg-clip-text text-transparent font-mono`}>
                 {String(current + 1).padStart(2, '0')} / {String(services.length).padStart(2, '0')}
               </span>
@@ -676,10 +649,9 @@ export default function Services() {
           </div>
         </motion.div>
 
-        {/* Stats */}
         <StatsRow inView={inView} />
 
-        {/* ── Carousel ── */}
+        {/* ── CAROUSEL ── */}
         <motion.div
           initial={{ opacity: 0, y: 40 }} animate={inView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.8, delay: 0.2 }}
           className="relative"
@@ -688,27 +660,61 @@ export default function Services() {
           onTouchStart={() => setPaused(true)}
           onTouchEnd={() => setPaused(false)}
         >
-          {/* Cards viewport — extra side padding on mobile to show nav arrows inside */}
-          <div className="overflow-hidden px-8 sm:px-3 py-6 sm:py-8">
-            <div
-              className="flex"
-              style={{ gap: `${gapPct}%`, transition: 'none' }}
-            >
-              {Array.from({ length: visibleCount + 2 }, (_, i) => {
-                const offset = i - 1
+          {/* 
+            CAROUSEL TRACK
+            - overflow-hidden clips the cards
+            - We render center-1, center, center+1 (and extra partials)
+            - On mobile: cards are 76% wide so you see ~12% peeking on each side
+            - Center card gets scale(1.05) + translateY(-10px) + full opacity + big glow
+            - Side cards get scale(0.82) + translateY(18px) + dim opacity
+          */}
+          <div className="overflow-hidden py-10">
+            {/* Inner flex container — always centered */}
+            <div className="flex items-center justify-center" style={{ gap: `${CARD_GAP}px` }}>
+              {[-2, -1, 0, 1, 2].map((offset) => {
                 const idx = ((current + offset) % services.length + services.length) % services.length
                 const isCenter = offset === 0
                 const isNear = Math.abs(offset) === 1
+                const isFar = Math.abs(offset) === 2
+
+                // Scale, Y offset, opacity per position
+                const scale = isCenter ? 1.06 : isNear ? 0.88 : 0.76
+                const translateY = isCenter ? -10 : isNear ? 10 : 22
+                const opacity = isCenter ? 1 : isNear ? 0.55 : 0.2
+                const zIndex = isCenter ? 30 : isNear ? 20 : 10
+                const pointerEvents = isCenter || isNear ? 'auto' : 'none'
+
+                // Card width
+                let cardWidth
+                if (isMobile) {
+                  // Mobile: center=76%, side=74% (peek visible from clip)
+                  cardWidth = isCenter ? '76vw' : '74vw'
+                } else if (visibleCount === 2) {
+                  cardWidth = isCenter ? 'calc(46% - 8px)' : 'calc(44% - 8px)'
+                } else {
+                  // Desktop 3-up
+                  cardWidth = isCenter ? 'calc(33% - 8px)' : 'calc(31% - 8px)'
+                }
+
+                // On mobile, hide far cards entirely (they're clipped but shouldn't shift layout)
+                if (isMobile && isFar) return null
+
                 return (
                   <motion.div
-                    key={`${current}-${i}`}
-                    style={{ width: `${(100 - gapPct * (visibleCount + 1)) / visibleCount}%`, flexShrink: 0 }}
+                    key={`${current}-${offset}`}
+                    style={{
+                      width: cardWidth,
+                      flexShrink: 0,
+                      zIndex,
+                      pointerEvents,
+                    }}
                     animate={{
-                      scale: isCenter ? 1 : isNear ? 0.93 : 0.86,
-                      opacity: isCenter ? 1 : isNear ? 0.65 : 0.35,
-                      y: isCenter ? 0 : isNear ? 12 : 24,
+                      scale,
+                      y: translateY,
+                      opacity,
                     }}
                     transition={{ duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
+                    onClick={() => { if (!isCenter) goTo(current + offset) }}
                   >
                     <ServiceCard service={services[idx]} isActive={isCenter} />
                   </motion.div>
@@ -717,10 +723,10 @@ export default function Services() {
             </div>
           </div>
 
-          {/* Left nav — inside bounds on mobile */}
+          {/* LEFT nav arrow */}
           <button
             onClick={prev}
-            className="absolute left-0 sm:-left-2 top-1/2 -translate-y-1/2 z-30 w-9 h-9 sm:w-12 sm:h-12 rounded-xl sm:rounded-2xl bg-[#0d0d18]/90 backdrop-blur border border-white/12 flex items-center justify-center text-white/60 hover:text-white hover:border-white/30 hover:bg-white/10 active:scale-95 transition-all group shadow-xl"
+            className="absolute left-0 sm:-left-3 top-1/2 -translate-y-1/2 z-40 w-9 h-9 sm:w-12 sm:h-12 rounded-xl sm:rounded-2xl bg-[#0d0d18]/95 backdrop-blur border border-white/15 flex items-center justify-center text-white/70 hover:text-white hover:border-white/35 hover:bg-white/12 active:scale-95 transition-all group shadow-2xl"
             aria-label="Previous"
           >
             <svg className="w-4 h-4 sm:w-5 sm:h-5 group-hover:-translate-x-0.5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -728,10 +734,10 @@ export default function Services() {
             </svg>
           </button>
 
-          {/* Right nav — inside bounds on mobile */}
+          {/* RIGHT nav arrow */}
           <button
             onClick={next}
-            className="absolute right-0 sm:-right-2 top-1/2 -translate-y-1/2 z-30 w-9 h-9 sm:w-12 sm:h-12 rounded-xl sm:rounded-2xl bg-[#0d0d18]/90 backdrop-blur border border-white/12 flex items-center justify-center text-white/60 hover:text-white hover:border-white/30 hover:bg-white/10 active:scale-95 transition-all group shadow-xl"
+            className="absolute right-0 sm:-right-3 top-1/2 -translate-y-1/2 z-40 w-9 h-9 sm:w-12 sm:h-12 rounded-xl sm:rounded-2xl bg-[#0d0d18]/95 backdrop-blur border border-white/15 flex items-center justify-center text-white/70 hover:text-white hover:border-white/35 hover:bg-white/12 active:scale-95 transition-all group shadow-2xl"
             aria-label="Next"
           >
             <svg className="w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-0.5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -740,29 +746,21 @@ export default function Services() {
           </button>
         </motion.div>
 
-        {/* ── Controls row ── */}
+        {/* ── Controls ── */}
         <motion.div
           initial={{ opacity: 0, y: 20 }} animate={inView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.6, delay: 0.5 }}
           className="mt-2 flex flex-col items-center gap-4 sm:gap-5"
         >
-          {/* Progress bar */}
           <div className="svc-progress-bar w-48 sm:w-64">
             <div className="svc-progress-fill" style={{ width: `${progress}%` }} />
           </div>
 
-          {/* Dot indicators — scrollable on mobile */}
           <div className="svc-dots-row">
             {services.map((_, i) => (
-              <button
-                key={i}
-                onClick={() => goTo(i)}
-                className={`svc-dot ${i === current ? 'active' : ''}`}
-                aria-label={`Go to slide ${i + 1}`}
-              />
+              <button key={i} onClick={() => goTo(i)} className={`svc-dot ${i === current ? 'active' : ''}`} aria-label={`Go to slide ${i + 1}`} />
             ))}
           </div>
 
-          {/* Active card name + type badges — stacks on mobile */}
           <div className="flex flex-col sm:flex-row flex-wrap items-center justify-center gap-2 sm:gap-3 w-full px-2 sm:px-0">
             <div className="flex items-center gap-2.5 px-4 sm:px-5 py-2 sm:py-2.5 rounded-2xl bg-white/4 border border-white/10 max-w-full">
               <span className="text-base sm:text-lg flex-shrink-0">{services[current].icon}</span>
@@ -773,11 +771,11 @@ export default function Services() {
             </div>
             <div className="flex gap-2">
               <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white/4 border border-white/8">
-                <span className="text-[10px] text-white/50">💻</span>
+                <span className="text-[10px]">💻</span>
                 <span className="text-xs font-semibold text-white/50">{services.filter(s => s.type === 'dev').length} Dev</span>
               </div>
               <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white/4 border border-white/8">
-                <span className="text-[10px] text-white/50">🎨</span>
+                <span className="text-[10px]">🎨</span>
                 <span className="text-xs font-semibold text-white/50">{services.filter(s => s.type === 'design').length} Design</span>
               </div>
             </div>
