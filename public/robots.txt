@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 
 # Sitemap location — tells Google exactly where to find your pages
-Sitemap: https://kherimurtaza.github.io/graphic-designer/sitemap.xml
+Sitemap: https://kherimurtaza.github.io/mk-dev/sitemap.xml

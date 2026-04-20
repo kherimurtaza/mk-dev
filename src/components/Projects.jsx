@@ -185,9 +185,18 @@ function FeaturedCard({ project }) {
       className={`group relative rounded-[2rem] border ${project.border} bg-[#0c0c14] overflow-hidden hover:shadow-2xl hover:shadow-black/70 transition-all duration-500`}
       style={{ boxShadow: `0 0 0 0px rgba(${project.accentRgb},0)` }}
     >
-      <div className="grid lg:grid-cols-[1fr_420px] min-h-[420px]">
+      <div className="grid min-h-[420px] lg:grid-cols-[1fr_420px]">
+        {/* RIGHT: Screenshot */}
+        <div className="relative order-1 h-52 sm:h-64 lg:order-2 lg:h-auto">
+          <ProjectImage project={project} />
+          {/* Left fade into content (desktop only) */}
+          <div className="absolute inset-y-0 left-0 z-10 hidden w-20 bg-gradient-to-r from-[#0c0c14] to-transparent lg:block" />
+          {/* Decorative accent line at top of image */}
+          <div className={`absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent ${project.textAccent.replace('text-', 'via-')} to-transparent`} />
+        </div>
+
         {/* LEFT: Content */}
-        <div className="relative z-10 p-10 flex flex-col justify-between">
+        <div className="relative z-10 order-2 p-5 sm:p-8 lg:order-1 lg:p-10 flex flex-col justify-between">
           {/* Header meta */}
           <div>
             <div className="flex items-center gap-3 mb-5">
@@ -236,12 +245,12 @@ function FeaturedCard({ project }) {
           </div>
 
           {/* CTA */}
-          <div className="flex items-center gap-4 mt-8 pt-6 border-t border-white/6">
+          <div className="mt-8 flex flex-col gap-3 border-t border-white/6 pt-6 sm:flex-row sm:items-center sm:gap-4">
             <a
               href={project.url}
               target="_blank"
               rel="noreferrer"
-              className={`group/btn relative overflow-hidden inline-flex items-center gap-2 rounded-full bg-gradient-to-r ${project.gradient} px-6 py-3 text-sm font-black text-white shadow-lg hover:scale-105 hover:shadow-xl transition-all`}
+              className={`group/btn relative inline-flex w-full items-center justify-center gap-2 overflow-hidden rounded-full bg-gradient-to-r ${project.gradient} px-6 py-3 text-sm font-black text-white shadow-lg transition-all hover:scale-105 hover:shadow-xl sm:w-auto sm:justify-start`}
             >
               <span className="absolute inset-0 translate-x-[-100%] group-hover/btn:translate-x-[100%] transition-transform duration-600 bg-gradient-to-r from-transparent via-white/20 to-transparent" />
               <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -249,17 +258,10 @@ function FeaturedCard({ project }) {
               </svg>
               Visit Live Site
             </a>
-            <span className={`text-xs font-mono ${project.textAccent} opacity-70`}>{project.url.replace('https://', '')}</span>
+            <span className={`max-w-full break-all text-xs font-mono ${project.textAccent} opacity-70 sm:break-normal`}>
+              {project.url.replace('https://', '')}
+            </span>
           </div>
-        </div>
-
-        {/* RIGHT: Screenshot */}
-        <div className="relative hidden lg:block">
-          <ProjectImage project={project} />
-          {/* Left fade into content */}
-          <div className="absolute inset-y-0 left-0 w-20 bg-gradient-to-r from-[#0c0c14] to-transparent z-10" />
-          {/* Decorative accent line at top of image */}
-          <div className={`absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent ${project.textAccent.replace('text-', 'via-')} to-transparent`} />
         </div>
       </div>
     </motion.article>
