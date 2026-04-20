@@ -1,6 +1,6 @@
 import { motion, useInView } from "framer-motion";
 import { useRef, useState } from "react";
-import aboutImg from "/img/img-1.jpg";
+import aboutImg from "/img/img-1.jpeg";
 
 // ─── Skill categories with icons & colors ───────────────────────────────────
 const skillCategories = [
